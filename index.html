@@ -12,16 +12,30 @@
 </head>
 <body>
     <main class="mainContainer">
-        <img src="./assets/phone-insta.png" alt="">
+        <div class="phoneContainer">
+            <img src="./assets/phone.png" alt="phone">
+            <img src="./assets/00.png" alt="phone-image" id="instaImage">
+        </div>
         <div class="rightContainer">
             <div class="containerBorder">
                 <img src="./assets/instagram.png" alt="instagram">
-                <p>You can log into these accounts because they're in your Accounts Center.</p>
-                <hr>
+                <div class="formLogin">
+                    <input type="text" placeholder="Phone number, username, or email">
+                    <input type="password" placeholder="Password">
+                    <button>Log in</button>
+                </div>
+                <div class="orDivider">
+                    <hr> <span>OR</span> <hr>
+                </div>
+                <div class="fbLogin">
+                    <img src="./assets/fb-icon.png" alt="fb">
+                    <p>Log in with Facebook</p>
+                </div>
+                <a href="#">Forgot password?</a>
             </div>
             <div class="containerBorder">
                 <span>
-                    <a href="">Switch accounts</a> or <a href="">Sign up</a>
+                    Don't have an account? <a href="#">Sign up</a>
                 </span>
             </div>
             <p>Get the app.</p>
@@ -53,5 +67,28 @@
             <p>© 2023 Instagram from Meta</p>
         </div>
     </footer>
+
+    <script>
+        var imgSlide = document.getElementById('instaImage');
+        var images = ['./assets/00.png', './assets/01.png', './assets/02.png', './assets/03.png'];
+        var index = 0;
+        var i = 0;
+
+        function changeImage() {
+            // index += 1;
+            // if (index == images.length) {
+            //     index = 0;
+            // }
+            // imgSlide.src = images[index];
+            if (++i % 2) {
+                imgSlide.style.opacity = 0.1;
+            } else {
+                imgSlide.style.opacity = 1;
+                imgSlide.src = images[index = (index + 1) % images.length];
+            }
+        }
+
+        setInterval(changeImage, 5000);
+    </script>
 </body>
 </html>

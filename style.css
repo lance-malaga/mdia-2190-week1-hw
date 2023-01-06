@@ -5,9 +5,13 @@
     --hr-gray: #dbdbdb;
     --footer-light-gray: #8e8e8e;
     --black: #262626;
+    --fb-blue: #385185;
+    --link-dark-blue: #00376b;
     --link-blue: #0095f6;
+    --input-bg: #e8f0fe;
 
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-weight-normal: 400;
     --font-weight-semibold: 600;
 }
 
@@ -26,32 +30,46 @@ body {
     padding-bottom: 32px;
 }
 
-.mainContainer > img {
+.phoneContainer img:first-child {
     height: 581.15px;
     margin-right: 32px;
 }
 
+.phoneContainer img:last-child {
+    width: 250px;
+    position: absolute;
+    margin-top: 25px;
+    margin-left: -299px;
+    transition: opacity 1.5s ease-in-out;
+}
+
 .rightContainer {
+    width: 350px;
     max-width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    margin-top: 12px;
+}
+
+.rightContainer > p {
+    margin: 10px 0;
 }
 
 .containerBorder {
     border: 1px solid var(--border-container);
     background: var(--white);
-    padding: 10px 15px;
+    padding: 10px 40px;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.containerBorder img {
-    height: 52px;
-    margin: 36px 0 24px;
+.containerBorder > img {
+    height: 51px;
+    margin: 36px 0;
 }
 
 .containerBorder p {
@@ -69,16 +87,81 @@ body {
     font-weight: var(--font-weight-semibold);
 }
 
+.containerBorder > a {
+    color: var(--link-dark-blue);
+    font-weight: var(--font-weight-normal);
+    margin: 12px 0 10px;
+    font-size: 12px;
+}
+
+.formLogin {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formLogin button {
+    margin: 8px 0;
+    padding: 7px 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--link-blue);
+    opacity: .7;
+    color: var(--white);
+    width: 100%;
+}
+
+input {
+    border: 1px solid var(--border-container);
+    background-color: var(--off-white);
+    padding: 10px 0 10px 8px;
+    margin-bottom: 6px;
+    outline: none;
+    border-radius: 3px;
+}
+
+input::placeholder {
+    color: var(--footer-light-gray);
+    font-size: 12px;
+}
+
+.fbLogin {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    font-weight: var(--font-weight-semibold);
+}
+
+.fbLogin img {
+    height: 16px;
+    margin-right: 8px;
+}
+
+
+.fbLogin p {
+    color: var(--fb-blue);
+    margin: 0;
+}
+
+.orDivider {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 18px;
+    width: 100%;
+}
+
+.orDivider span {
+    margin: 0 18px;
+    color: var(--footer-light-gray);
+    font-weight: var(--font-weight-semibold);
+    font-size: 13px;
+}
+
 hr {
     width: 100%;
-    margin: 32px 0 24px;
     height: 1px;
     border: none;
     background-color: var(--hr-gray);
-}
-
-.rightContainer p {
-    margin: 10px 0;
 }
 
 .appDownload {
@@ -132,11 +215,12 @@ select {
 }
 
 .footerRights p {
+    margin: 0;
     margin-left: 16px;
 }
 
 @media screen and (max-width: 875px) {
-    .mainContainer > img {
+    .phoneContainer {
        display: none;
     }
 }
