@@ -14,7 +14,12 @@
     <main class="mainContainer">
         <div class="phoneContainer">
             <img src="./assets/phone.png" alt="phone">
-            <img src="./assets/00.png" alt="phone-image" id="instaImage">
+            <div class="phoneScreenImg">
+                <img src="./assets/01.png" alt="phone-image01" class="instaImage">
+                <img src="./assets/02.png" alt="phone-image02" class="instaImage">
+                <img src="./assets/03.png" alt="phone-image03" class="instaImage">
+                <img src="./assets/00.png" alt="phone-image00" class="instaImage">
+            </div>
         </div>
         <div class="rightContainer">
             <div class="containerBorder">
@@ -69,26 +74,64 @@
     </footer>
 
     <script>
-        var imgSlide = document.getElementById('instaImage');
-        var images = ['./assets/00.png', './assets/01.png', './assets/02.png', './assets/03.png'];
-        var index = 0;
-        var i = 0;
+        var images = document.getElementsByClassName("instaImage");
+        var topImg = 1;
+        var currentImg = images.length - 1;
 
-        function changeImage() {
+        for (var i = 0; i < images.length; ++i) {
+            images[i].style.opacity = 1;
+        }
+        
+        setInterval(changeImage, 5000);
+        // var images = ['./assets/00.png', './assets/01.png', './assets/02.png', './assets/03.png'];
+        // var index = 0;
+        // var i = 0;
+
+        async function changeImage() {
+            var nextImage = (currentImg + 1) % images.length;
+ 
+            images[currentImg].style.zIndex = topImg + 1;
+            images[nextImage].style.zIndex = topImg;
+
+            await transition();
+
+            images[currentImg].style.zIndex = topImg;
+            images[nextImage].style.zIndex = topImg + 1;
+
+            topImg += 1;
+
+            images[currentImg].style.opacity = 1;
+            
+            currentImg = nextImage;
+
             // index += 1;
             // if (index == images.length) {
             //     index = 0;
             // }
             // imgSlide.src = images[index];
-            if (++i % 2) {
-                imgSlide.style.opacity = 0.1;
-            } else {
-                imgSlide.style.opacity = 1;
-                imgSlide.src = images[index = (index + 1) % images.length];
-            }
+            
+            // if (++i % 2) {
+            //     // imgSlide.style.opacity = 0.1;
+            // } else {
+            //     imgSlide.style.opacity = 1;
+            //     imgSlide.src = images[index = (index + 1) % images.length];
+            // }
         }
 
-        setInterval(changeImage, 5000);
+        function transition() {
+            return new Promise(function(resolve, reject) {
+                var del = 0.01;
+                var id = setInterval(changeOpacity, 10);
+
+                function changeOpacity() {
+                    images[currentImg].style.opacity -= del;
+                    if (images[currentImg].style.opacity <= 0.1) {
+                        clearInterval(id);
+                        resolve();
+                    }
+                }
+            })
+        }
     </script>
 </body>
 </html>

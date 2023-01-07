@@ -30,17 +30,17 @@ body {
     padding-bottom: 32px;
 }
 
-.phoneContainer img:first-child {
+.phoneContainer > img {
     height: 581.15px;
     margin-right: 32px;
 }
 
-.phoneContainer img:last-child {
+.phoneScreenImg img {
     width: 250px;
     position: absolute;
-    margin-top: 25px;
-    margin-left: -299px;
-    transition: opacity 1.5s ease-in-out;
+    top: 0;
+    margin-top: 57px;
+    margin-left: 109px;
 }
 
 .rightContainer {
